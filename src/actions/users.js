@@ -39,3 +39,18 @@ export const updateUser = (userObject) => async (dispatch, getState) => {
     dispatch({ type: actionTypes.UPDATE_USER_FAILURE, payload: error })
   }
 }
+
+export const deleteUser = (userId) => async (dispatch, getState) => {
+  dispatch({ type: actionTypes.DELETE_USER_REQUEST })
+
+  try {
+    const response = await axios.delete(`http://localhost:7000/users/${userId}`)
+
+    dispatch({
+      type: actionTypes.DELETE_USER_SUCCESS,
+      payload: userId,
+    })
+  } catch (error) {
+    dispatch({ type: actionTypes.DELETE_USER_FAILURE, payload: error })
+  }
+}

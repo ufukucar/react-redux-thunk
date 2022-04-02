@@ -1,5 +1,5 @@
-import { fetchUsers, updateUser } from './users'
+import { fetchUsers, updateUser, deleteUser } from './users'
 
-let actions = { fetchUsers, updateUser }
+let actions = { fetchUsers, updateUser, deleteUser }
 
 export default actions

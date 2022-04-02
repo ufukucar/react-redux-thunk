@@ -14,8 +14,9 @@ const Users = () => {
   let usersState = useSelector((state) => state.userReducer)
 
   useEffect(() => {
-    console.log('usersState', usersState)
+    console.log('dispatch öncesi ')
     dispatch(actions.fetchUsers())
+    console.log('users fetch useeffect')
   }, [dispatch])
 
   let handleEditClick = (user, index) => {
@@ -38,7 +39,11 @@ const Users = () => {
     }
     dispatch(actions.updateUser(updatedUser))
   }
-  let handleDelete = (userId) => {}
+  let handleDelete = (userId) => {
+    if (window.confirm('Silmek istediğinize emin misiniz ?')) {
+      dispatch(actions.deleteUser(userId))
+    }
+  }
 
   return (
     <>
