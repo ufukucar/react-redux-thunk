@@ -1,10 +1,15 @@
 import './App.css'
+import { Provider } from 'react-redux'
+import store from './store'
+import Users from './components/users/Users'
 
 function App() {
   return (
-    <div className="App">
-      <p>Burası p</p>
-    </div>
+    <Provider store={store}>
+      <div className="container mt-5">
+        <Users />
+      </div>
+    </Provider>
   )
 }
 
