@@ -46,7 +46,6 @@ export const userReducer = (state = initialState, action) => {
       return { data: state.data, isLoading: true, error: null }
 
     case actionTypes.DELETE_USER_SUCCESS:
-      console.log('reducer user id: ', action.payload)
       return {
         data: state.data.filter((user) => user.id !== action.payload),
         isLoading: false,
