@@ -1,6 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import actions from '../../actions'
+
+import $ from 'jquery'
 
 const Modal = () => {
+  let [name, setName] = useState('')
+  let [email, setEmail] = useState('')
+  let [username, setUsername] = useState('')
+  let [phone, setPhone] = useState('')
+  let dispatch = useDispatch()
+  let usersState = useSelector((state) => state.userReducer)
+
+  let handleAddUser = () => {
+    let newUser = {
+      id: usersState.data.length + 1,
+      name,
+      username,
+      email,
+      phone,
+    }
+
+    dispatch(actions.addUser(newUser))
+
+    window.$('#exampleModal').modal('hide')
+  }
+
   return (
     <>
       <div
@@ -27,28 +52,52 @@ const Modal = () => {
                 <label htmlFor="name" className="col-form-label">
                   Ad Soyad:
                 </label>
-                <input type="text" className="form-control" id="name" />
+                <input
+                  type="text"
+                  className="form-control"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
               </div>
 
               <div className="mb-3">
                 <label htmlFor="username" className="col-form-label">
                   Kullanıcı Adı:
                 </label>
-                <input type="text" className="form-control" id="username" />
+                <input
+                  type="text"
+                  className="form-control"
+                  id="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
               </div>
 
               <div className="mb-3">
                 <label htmlFor="email" className="col-form-label">
                   E-posta:
                 </label>
-                <input type="text" className="form-control" id="email" />
+                <input
+                  type="text"
+                  className="form-control"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </div>
 
               <div className="mb-3">
                 <label htmlFor="phone" className="col-form-label">
                   Telefon:
                 </label>
-                <input type="text" className="form-control" id="phone" />
+                <input
+                  type="text"
+                  className="form-control"
+                  id="phone"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
               </div>
             </div>
             <div className="modal-footer">
@@ -59,7 +108,11 @@ const Modal = () => {
               >
                 Kapat
               </button>
-              <button type="button" className="btn btn-primary">
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={() => handleAddUser()}
+              >
                 Kaydet
               </button>
             </div>

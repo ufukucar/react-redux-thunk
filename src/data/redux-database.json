@@ -48,6 +48,13 @@
       "username": "Delphine",
       "email": "Chaim_McDermott@dana.io",
       "phone": "(775)976-6794"
+    },
+    {
+      "id": 8,
+      "name": "Yeni eklenen kullanıcı 2",
+      "username": "yeniKullanici 2",
+      "email": "yeni2@kullanici.com",
+      "phone": "12365478903"
     }
   ]
 }

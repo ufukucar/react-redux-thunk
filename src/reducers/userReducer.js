@@ -59,6 +59,23 @@ export const userReducer = (state = initialState, action) => {
         error: action.payload,
       }
 
+    case actionTypes.ADD_USERS_REQUEST:
+      return { data: state.data, isLoading: true, error: null }
+
+    case actionTypes.ADD_USER_SUCCESS:
+      return {
+        data: [...state.data, action.payload],
+        isLoading: false,
+        error: null,
+      }
+
+    case actionTypes.ADD_USER_FAILURE:
+      return {
+        data: state.data,
+        isLoading: false,
+        error: action.payload,
+      }
+
     default:
       return state
   }

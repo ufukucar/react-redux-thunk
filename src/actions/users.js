@@ -54,3 +54,18 @@ export const deleteUser = (userId) => async (dispatch, getState) => {
     dispatch({ type: actionTypes.DELETE_USER_FAILURE, payload: error })
   }
 }
+
+export const addUser = (user) => async (dispatch, getState) => {
+  dispatch({ type: actionTypes.ADD_USERS_REQUEST })
+
+  try {
+    const response = await axios.post('http://localhost:7000/users', user)
+
+    dispatch({
+      type: actionTypes.ADD_USER_SUCCESS,
+      payload: user,
+    })
+  } catch (error) {
+    dispatch({ type: actionTypes.ADD_USER_FAILURE, payload: error })
+  }
+}

@@ -4,16 +4,15 @@ import actions from '../../actions'
 import Modal from '../modal/Modal'
 
 const Users = () => {
+  let dispatch = useDispatch()
+  let usersState = useSelector((state) => state.userReducer)
+
   let [nameEdit, setNameEdit] = useState('')
   let [emailEdit, setEmailEdit] = useState('')
   let [usernameEdit, setUsernameEdit] = useState('')
   let [phoneEdit, setPhoneEdit] = useState('')
   let [editClick, setEditClick] = useState(false)
   let [userIndex, setUserIndex] = useState(-1)
-  let [showModal, setShowModal] = useState(false)
-
-  let dispatch = useDispatch()
-  let usersState = useSelector((state) => state.userReducer)
 
   useEffect(() => {
     dispatch(actions.fetchUsers())
